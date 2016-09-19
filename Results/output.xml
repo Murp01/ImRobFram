@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20160918 22:49:08.772" generator="Robot 3.0 (Python 2.7.12 on win32)">
+<suite source="C:\Automation\pythonRobotFramework\Robot-Scripts\IMDB\tests" id="s1" name="Tests">
+<suite source="C:\Automation\pythonRobotFramework\Robot-Scripts\IMDB\tests\SearchForMovie.robot" id="s1-s1" name="SearchForMovie">
+<test id="s1-s1-t1" name="Search For Movie">
+<kw name="Begin Web Test" library="Common">
+<arguments>
+<arg>about:blank</arg>
+<arg>ff</arg>
+</arguments>
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20160918 22:49:09.273" level="INFO">Opening browser 'ff' to base url 'about:blank'</msg>
+<status status="PASS" endtime="20160918 22:49:20.461" starttime="20160918 22:49:09.273"></status>
+</kw>
+<status status="PASS" endtime="20160918 22:49:20.462" starttime="20160918 22:49:09.273"></status>
+</kw>
+<kw name="Open The System Under Test" library="Common">
+<arguments>
+<arg>http://www.imdb.com</arg>
+</arguments>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${SUT}</arg>
+</arguments>
+<msg timestamp="20160918 22:49:20.465" level="INFO">Opening url 'http://www.imdb.com'</msg>
+<status status="PASS" endtime="20160918 22:49:34.653" starttime="20160918 22:49:20.464"></status>
+</kw>
+<status status="PASS" endtime="20160918 22:49:34.653" starttime="20160918 22:49:20.463"></status>
+</kw>
+<kw name="Search for movie using the searchbox" library="ImdbHome">
+<arguments>
+<arg>Doctor Strange</arg>
+</arguments>
+<kw name="Wait Until Page Contains" library="Selenium2Library">
+<doc>Waits until `text` appears on current page.</doc>
+<arguments>
+<arg>watchlist</arg>
+</arguments>
+<status status="PASS" endtime="20160918 22:49:38.394" starttime="20160918 22:49:34.657"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//input[@id='navbar-query']</arg>
+<arg>${SEARCH ITEM}</arg>
+</arguments>
+<msg timestamp="20160918 22:49:38.394" level="INFO">Typing text 'Doctor Strange' into text field 'xpath=//input[@id='navbar-query']'</msg>
+<status status="PASS" endtime="20160918 22:49:38.947" starttime="20160918 22:49:38.394"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//button[@id='navbar-submit-button']</arg>
+</arguments>
+<msg timestamp="20160918 22:49:38.949" level="INFO">Clicking button 'xpath=//button[@id='navbar-submit-button']'.</msg>
+<status status="PASS" endtime="20160918 22:49:45.119" starttime="20160918 22:49:38.947"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>xpath=//a[contains(text(),'${SEARCH ITEM}')]/../../..[1]</arg>
+</arguments>
+<status status="PASS" endtime="20160918 22:49:45.266" starttime="20160918 22:49:45.120"></status>
+</kw>
+<status status="PASS" endtime="20160918 22:49:45.266" starttime="20160918 22:49:34.655"></status>
+</kw>
+<kw name="Select the movie link from the results page" library="ImdbSearchResults">
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>xpath=//a[contains(text(),'${SEARCH ITEM}')]/../../../tr [1]/td[2]/a</arg>
+</arguments>
+<msg timestamp="20160918 22:49:45.281" level="INFO">Clicking link 'xpath=//a[contains(text(),'')]/../../../tr [1]/td[2]/a'.</msg>
+<status status="PASS" endtime="20160918 22:49:45.529" starttime="20160918 22:49:45.281"></status>
+</kw>
+<status status="PASS" endtime="20160918 22:49:45.529" starttime="20160918 22:49:45.266"></status>
+</kw>
+<kw name="Confirm The Correct Movie Profile Via Title" library="ImdbMovieProfile">
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>xpath=//div[@class='title_wrapper']/h1[contains(text(),${SEARCH ITEM})]</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20160918 22:49:52.585" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20160918 22:49:52.585" starttime="20160918 22:49:50.404"></status>
+</kw>
+<msg timestamp="20160918 22:49:52.601" level="FAIL">InvalidSelectorException: Message: The given selector //div[@class='title_wrapper']/h1[contains(text(),)] is either invalid or does not result in a WebElement. The following error occurred:
+InvalidSelectorError: Unable to locate an element with the xpath expression //div[@class='title_wrapper']/h1[contains(text(),)] because of the following error:
+SyntaxError: The expression is not a legal expression.
+Stacktrace:
+    at FirefoxDriver.annotateInvalidSelectorError_ (file:///c:/users/paul/appdata/local/temp/tmpj4puif/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/driver-component.js:10744)
+    at FirefoxDriver.prototype.findElementsInternal_ (file:///c:/users/paul/appdata/local/temp/tmpj4puif/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/driver-component.js:10802)
+    at FirefoxDriver.prototype.findElements (file:///c:/users/paul/appdata/local/temp/tmpj4puif/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/driver-component.js:10806)
+    at DelayedCommand.prototype.executeInternal_/h (file:///c:/users/paul/appdata/local/temp/tmpj4puif/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/command-processor.js:12661)
+    at DelayedCommand.prototype.executeInternal_ (file:///c:/users/paul/appdata/local/temp/tmpj4puif/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/command-processor.js:12666)
+    at DelayedCommand.prototype.execute/&lt; (file:///c:/users/paul/appdata/local/temp/tmpj4puif/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/command-processor.js:12608)</msg>
+<status status="FAIL" endtime="20160918 22:49:52.602" starttime="20160918 22:49:45.545"></status>
+</kw>
+<status status="FAIL" endtime="20160918 22:49:52.603" starttime="20160918 22:49:45.545"></status>
+</kw>
+<kw type="teardown" name="End Web Test" library="Common">
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20160918 22:49:53.544" starttime="20160918 22:49:52.605"></status>
+</kw>
+<status status="PASS" endtime="20160918 22:49:53.544" starttime="20160918 22:49:52.605"></status>
+</kw>
+<status status="FAIL" endtime="20160918 22:49:53.544" critical="yes" starttime="20160918 22:49:09.273">InvalidSelectorException: Message: The given selector //div[@class='title_wrapper']/h1[contains(text(),)] is either invalid or does not result in a WebElement. The following error occurred:
+InvalidSelectorError: Unable to locate an element with the xpath expression //div[@class='title_wrapper']/h1[contains(text(),)] because of the following error:
+SyntaxError: The expression is not a legal expression.
+Stacktrace:
+    at FirefoxDriver.annotateInvalidSelectorError_ (file:///c:/users/paul/appdata/local/temp/tmpj4puif/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/driver-component.js:10744)
+    at FirefoxDriver.prototype.findElementsInternal_ (file:///c:/users/paul/appdata/local/temp/tmpj4puif/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/driver-component.js:10802)
+    at FirefoxDriver.prototype.findElements (file:///c:/users/paul/appdata/local/temp/tmpj4puif/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/driver-component.js:10806)
+    at DelayedCommand.prototype.executeInternal_/h (file:///c:/users/paul/appdata/local/temp/tmpj4puif/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/command-processor.js:12661)
+    at DelayedCommand.prototype.executeInternal_ (file:///c:/users/paul/appdata/local/temp/tmpj4puif/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/command-processor.js:12666)
+    at DelayedCommand.prototype.execute/&lt; (file:///c:/users/paul/appdata/local/temp/tmpj4puif/webdriver-py-profilecopy/extensions/fxdriver@googlecode.com/components/command-processor.js:12608)</status>
+</test>
+<test id="s1-s1-t2" name="View A Movies Discussion Board">
+<kw name="Begin Web Test" library="Common">
+<arguments>
+<arg>about:blank</arg>
+<arg>ff</arg>
+</arguments>
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20160918 22:49:53.560" level="INFO">Opening browser 'ff' to base url 'about:blank'</msg>
+<status status="PASS" endtime="20160918 22:50:04.990" starttime="20160918 22:49:53.560"></status>
+</kw>
+<status status="PASS" endtime="20160918 22:50:04.990" starttime="20160918 22:49:53.560"></status>
+</kw>
+<kw name="Open The System Under Test" library="Common">
+<arguments>
+<arg>http://www.imdb.com</arg>
+</arguments>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${SUT}</arg>
+</arguments>
+<msg timestamp="20160918 22:50:04.993" level="INFO">Opening url 'http://www.imdb.com'</msg>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20160918 22:51:14.155" level="FAIL">error: [Errno 10061] No connection could be made because the target machine actively refused it</msg>
+<status status="FAIL" endtime="20160918 22:51:14.155" starttime="20160918 22:51:13.129"></status>
+</kw>
+<msg timestamp="20160918 22:51:14.155" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: error: [Errno 10061] No connection could be made because the target machine actively refused it</msg>
+<msg timestamp="20160918 22:51:14.171" level="FAIL">BadStatusLine: ''</msg>
+<status status="FAIL" endtime="20160918 22:51:14.171" starttime="20160918 22:50:04.993"></status>
+</kw>
+<status status="FAIL" endtime="20160918 22:51:14.171" starttime="20160918 22:50:04.992"></status>
+</kw>
+<kw type="teardown" name="End Web Test" library="Common">
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20160918 22:51:15.842" starttime="20160918 22:51:14.171"></status>
+</kw>
+<status status="PASS" endtime="20160918 22:51:15.842" starttime="20160918 22:51:14.171"></status>
+</kw>
+<status status="FAIL" endtime="20160918 22:51:15.843" critical="yes" starttime="20160918 22:49:53.560">BadStatusLine: ''</status>
+</test>
+<doc>Searches the website for a specific movie</doc>
+<status status="FAIL" endtime="20160918 22:51:15.848" starttime="20160918 22:49:08.854"></status>
+</suite>
+<status status="FAIL" endtime="20160918 22:51:15.858" starttime="20160918 22:49:08.772"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="2" pass="0">Critical Tests</stat>
+<stat fail="2" pass="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="2" id="s1" name="Tests" pass="0">Tests</stat>
+<stat fail="2" id="s1-s1" name="SearchForMovie" pass="0">Tests.SearchForMovie</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20160918 22:51:14.155" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: error: [Errno 10061] No connection could be made because the target machine actively refused it</msg>
+</errors>
+</robot>

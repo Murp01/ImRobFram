@@ -1,0 +1,10 @@
+I had a problem trying to assign variables to 'Begin Test' in the 'Test Set' Setting.
+It appears that variable cannot be added to 'Test Setup' in the settings.
+
+Instead of using the keyword section and explicitly entering the values there.  I have assigned two variable
+that can be populated within the test itself.
+
+I have created a variable space called SEARCHITEM in the 'Imdb.robot' file.  I have also added the 'Imdb.robot' as a
+Resource to all page objects that will use the search item to enter/locate an xpath.  If this doesn't work, I will have
+to go back to using it as an argument for the one page only.  I'm sure there will be a way of doing it and will need to
+look further into it.

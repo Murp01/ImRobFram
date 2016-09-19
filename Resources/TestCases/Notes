@@ -1,0 +1,29 @@
+pybot -d results tests/Searchformovie.robot  - runs the SearchForMovie test file
+
+First I wrote out test cases on Test file
+Between each test case I entered the appropriate code to proceed to next step
+Copied all the code including the test step names into keyword section
+Deleted code from between each step of the Test Case section and deleted hashes from the front of test case name
+Deleted Hashes from the test step names in keyword section
+
+Placed each keyword into the corresponding PageObject or resource into the keyword sections
+Entered Selenium 2 Library into Settings section of each page object
+Added the Page object name into the Test file's Settings section, prefixed by Resource and the root location (had to add ../) to navigate there
+Deleted selenium library from test file
+
+Instead of having Begin Web Test and End Web Test in the test case itself, They can be placed in Settings as Test Set Up and Test Tear down
+These can then be reused in any other tests created on the same page.
+
+Next steps
+Case sensitity is the issue with the search.  Is there a way around this?
+12 years a slave fails for some reason?
+Doctor Strange fails also
+Need to add variable for the title of the movie.  This will be entered as a variable in the seraches parameter
+Solve why I can't click on title in movie search name
+Add the top nav page object for search bar
+Look inot suite setup settings (lecture 41 adding set up and tear down for high level overview)
+Fill out the Page objects.
+Learn how to run different parts of a suite.
+Add some conditional logic here and there.
+Learn how to automate tests for applications rather than web pages
+Learn how to involve web appi stuff to it.
